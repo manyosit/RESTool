@@ -1,7 +1,7 @@
 # Shared definition block
 shared:
   # Source: https://hub.docker.com/r/library/buildpack-deps/
-  image: node:8
+  image: node:10
 # Job definition block
 jobs:
   main:
