@@ -1,7 +1,7 @@
 # Shared definition block
 shared:
   # Source: https://hub.docker.com/r/library/buildpack-deps/
-  image: node:8-alpine
+  image: node:8
 # Job definition block
 jobs:
   main:
@@ -11,8 +11,9 @@ jobs:
       - export: export GREETING="Hello, world!"
       - hello: echo $GREETING
       - set-metadata: meta set example.coverage 99.95
-  second_job:
+  test:
     requires: [main] # second_job will run after main job is done
     steps:
-      - make_target: npm -i
+      - install: npm install
+      - test: npm test
       - get-metadata: meta get example
