@@ -1,7 +1,7 @@
 # Shared definition block
 shared:
   # Source: https://hub.docker.com/r/library/buildpack-deps/
-  image: buildpack-deps
+  image: node:8-alpine
 # Job definition block
 jobs:
   main:
@@ -14,5 +14,5 @@ jobs:
   second_job:
     requires: [main] # second_job will run after main job is done
     steps:
-      - make_target: make greetings
+      - make_target: npm -i
       - get-metadata: meta get example
