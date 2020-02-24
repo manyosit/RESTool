@@ -16,4 +16,3 @@ jobs:
     steps:
       - make_target: make greetings
       - get-metadata: meta get example
-      - run_arbitrary_script: ./my_script.sh
