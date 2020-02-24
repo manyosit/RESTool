@@ -1,0 +1,15 @@
+# Job definition block
+jobs:
+  main:
+    requires: [~pr, ~commit]
+    # Steps definition block.
+    steps:
+      - export: export GREETING="Hello, world!"
+      - hello: echo $GREETING
+      - set-metadata: meta set example.coverage 99.95
+  second_job:
+    requires: [main] # second_job will run after main job is done
+    steps:
+      - make_target: make greetings
+      - get-metadata: meta get example
+      - run_arbitrary_script: ./my_script.sh
