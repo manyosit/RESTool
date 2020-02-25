@@ -18,5 +18,5 @@ jobs:
       - install: npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
       - env: npm bin
       - cd: cd /ng-app
-      - build: $(npm bin)/ng build --prod
+      - build: /sd/workspace/src/github.com/manyosit/RESTool/node_modules/bin/ng build --prod
       - get-metadata: meta get example
