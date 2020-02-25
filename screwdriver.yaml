@@ -14,8 +14,8 @@ jobs:
   test:
     requires: [main] # second_job will run after main job is done
     steps:
-      - install: npm install
-      - pwd: pwd
-      - docker: docker build .
-      - build: ng build --prod
+      - prepare-npm: npm set progress=false && npm config set depth 0 && npm cache clean --force
+      - install: npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+      - cd: cd /ng-app
+      - build: $(npm bin)/ng build --prod
       - get-metadata: meta get example
