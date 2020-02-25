@@ -15,5 +15,7 @@ jobs:
     requires: [main] # second_job will run after main job is done
     steps:
       - install: npm install
+      - pwd: pwd
+      - docker: docker build .
       - build: ng build --prod
       - get-metadata: meta get example
