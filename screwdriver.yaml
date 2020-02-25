@@ -16,6 +16,7 @@ jobs:
     steps:
       - prepare-npm: npm set progress=false && npm config set depth 0 && npm cache clean --force
       - install: npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+      - env: env
       - cd: cd /ng-app
       - build: $(npm bin)/ng build --prod
       - get-metadata: meta get example
